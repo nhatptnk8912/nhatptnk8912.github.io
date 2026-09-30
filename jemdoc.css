@@ -1,0 +1,349 @@
+/* Modern academic theme for Nhat Ho's homepage
+   Keeps the restrained Jemdoc character while adding responsive layout,
+   contemporary typography, clearer hierarchy, and better mobile behavior. */
+
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --sidebar: #f7f9fb;
+  --text: #1f2933;
+  --muted: #66717c;
+  --heading: #274f6b;
+  --accent: #2f6688;
+  --accent-dark: #214b66;
+  --link: #175f91;
+  --link-hover: #a64b00;
+  --border: #dfe5ea;
+  --soft-border: #e9edf1;
+  --shadow: 0 12px 34px rgba(31, 41, 51, 0.07);
+  --radius: 14px;
+  --content-width: 1100px;
+  --sidebar-width: 235px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.67;
+  text-rendering: optimizeLegibility;
+}
+
+#site-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  width: min(1440px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+#layout-menu {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 2.1rem 1.15rem 2rem;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.site-name {
+  margin: 0 0 1.2rem;
+  padding: 0 .55rem .95rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.22rem;
+  font-weight: 720;
+  letter-spacing: -.015em;
+}
+
+.site-name a {
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.primary-nav { display: block; }
+
+.menu-category,
+.menu-label {
+  margin: 1.15rem .55rem .42rem;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 760;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.menu-item { margin: .14rem 0; }
+
+.menu-item a,
+.nav-link {
+  display: block;
+  padding: .48rem .58rem;
+  border-radius: 8px;
+  color: #34424d;
+  font-size: .91rem;
+  line-height: 1.34;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.menu-item a:hover,
+.nav-link:hover {
+  background: #eaf0f4;
+  color: var(--accent-dark);
+}
+
+.menu-item a.current,
+.nav-link.current {
+  background: #e2ebf1;
+  color: var(--accent-dark);
+  font-weight: 680;
+}
+
+#layout-menu hr,
+#layout-menu br { display: none; }
+
+#layout-content {
+  width: 100%;
+  max-width: var(--content-width);
+  min-width: 0;
+  padding: 3.05rem clamp(2.1rem, 5vw, 5rem) 4.5rem;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading) !important;
+  font-weight: 680;
+  letter-spacing: -.018em;
+  line-height: 1.24;
+}
+
+h1 {
+  margin: 0 0 1.65rem;
+  font-size: clamp(2.15rem, 3.8vw, 3rem);
+}
+
+h2 {
+  margin: 2.8rem 0 .25rem;
+  font-size: clamp(1.42rem, 2.1vw, 1.72rem);
+}
+
+h3 {
+  margin: 2rem 0 .55rem !important;
+  padding-left: .8rem;
+  border-left: 3px solid #9ab3c4;
+  font-size: 1.14rem;
+}
+
+h4 { margin: 1.65rem 0 .45rem; font-size: 1.03rem; }
+
+p {
+  max-width: 88ch;
+  margin: .68rem 0 1rem;
+}
+
+strong, b { font-weight: 690; }
+
+hr {
+  height: 1px;
+  margin: .48rem 0 1.35rem;
+  border: 0;
+  background: linear-gradient(90deg, #cbd7df, transparent 90%);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: .08em;
+  text-underline-offset: .14em;
+}
+
+a:hover { color: var(--link-hover); }
+
+a:focus-visible {
+  outline: 2px solid #bf5700;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
+  gap: clamp(1.7rem, 4vw, 3rem);
+  align-items: center;
+  margin: .15rem 0 2.35rem;
+  padding: 1.45rem;
+  background: #fbfcfd;
+  border: 1px solid var(--soft-border);
+  border-radius: var(--radius);
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(31, 41, 51, .10);
+}
+
+.profile-details p { margin: .42rem 0 .86rem; }
+.profile-details p:last-child { margin-bottom: 0; }
+
+/* Legacy image tables on secondary pages */
+table.imgtable { width: 100%; border-collapse: collapse; }
+table.imgtable td { vertical-align: top; padding: .3rem .8rem .3rem 0; }
+table.imgtable img { max-width: 100%; height: auto; border-radius: 10px; }
+
+ul, ol {
+  max-width: 90ch;
+  margin: .6rem 0 1.25rem;
+  padding-left: 1.35rem;
+}
+
+li { margin: .38rem 0; }
+li p { margin: .32rem 0 .56rem; }
+
+/* The site uses one UL per publication on several pages. This keeps those lists compact. */
+#layout-content > ul {
+  margin-top: .28rem;
+  margin-bottom: .28rem;
+}
+
+#layout-content > ul > li {
+  padding: .16rem 0 .34rem;
+}
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem 1.15rem;
+  background: #f6f8fa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+img { max-width: 100%; }
+
+#footer {
+  margin-top: 3.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+#footer-text {
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+/* Slightly calmer presentation for legacy FONT tags used for paper labels. */
+font[color="blue"] { color: var(--link) !important; }
+font[color="red"] { color: #a33a34 !important; }
+
+@media (max-width: 900px) {
+  body { background: var(--surface); }
+
+  #site-shell {
+    display: block;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  #layout-menu {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: .9rem 1rem 1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    overflow: visible;
+  }
+
+  .site-name {
+    display: inline-block;
+    margin: 0 .75rem .55rem 0;
+    padding: .35rem .5rem;
+    border: 0;
+    font-size: 1.08rem;
+  }
+
+  .primary-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: center;
+  }
+
+  .menu-category,
+  .menu-label { display: none; }
+
+  .menu-item { margin: 0; }
+
+  .menu-item a,
+  .nav-link {
+    padding: .42rem .54rem;
+    font-size: .86rem;
+  }
+
+  #layout-content {
+    max-width: 100%;
+    padding: 2.2rem clamp(1.1rem, 4.5vw, 2.3rem) 3.5rem;
+  }
+
+  h1 { margin-bottom: 1.3rem; }
+
+  .profile-card {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.6rem;
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 650px) {
+  body { font-size: 16px; line-height: 1.62; }
+
+  .profile-card {
+    display: block;
+    padding: 1rem;
+  }
+
+  .profile-photo img {
+    width: min(235px, 72vw);
+    margin: 0 auto 1.2rem;
+  }
+
+  .profile-details { text-align: left; }
+
+  h2 { margin-top: 2.35rem; }
+  h3 { margin-top: 1.7rem !important; }
+
+  ul, ol { padding-left: 1.15rem; }
+}
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  #site-shell { display: block; width: 100%; box-shadow: none; }
+  #layout-menu { display: none; }
+  #layout-content { max-width: none; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  #footer { display: none; }
+}
